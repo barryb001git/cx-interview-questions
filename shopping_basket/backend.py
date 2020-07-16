@@ -20,7 +20,7 @@ def insert_item(item,price,discount, buy,get):
     conn.commit()
     conn.close
 
-def view_item():
+def view_items():
     conn=sqlite3.connect("items.db")
     cur=conn.cursor()
     cur.execute("SELECT * FROM item")
@@ -77,16 +77,16 @@ connect()
 
 #Check backend code
 #insert_item("Eggs",10.99,0.99,3,1)
-#print(view_item())  
+#print(view_items())  
 #print(search_items(item_name="Eggs",))
 #print(search_items("Yeti"))
 #delete_item(1)
 #print(search_items(item_name="Eggs",))
 #update_item(id=2,item="Yeti2",price="3",discount="4",buy="1",get="9")
-#print(view_item()) 
-print(show_basket())
-add_one_to_basket(4)
-print(show_basket())
-empty_basket()
-print(show_basket())
+#print(view_items()) 
+#print(show_basket())
+#add_one_to_basket(4)
+#print(show_basket())
+#empty_basket()
+#print(show_basket())
 
