@@ -144,4 +144,5 @@ b7.grid(row=10,column=1)
 #Show contents of basket
 show_basket() 
 
+
 window=mainloop()
