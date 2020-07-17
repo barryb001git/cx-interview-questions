@@ -43,8 +43,23 @@ def update_item_command():
     #print(selected_tuple) --Debugging
     backend.update_item(selected_tuple[0],item_text.get(),price_text.get(),discount_text.get(), buy_text.get(),get_text.get())  
 
-#def add_item_to_basket_command():
-#    backend.add_one_to_basket(1):             
+def show_basket():
+    list2.delete(0,END) 
+    for row in backend.show_basket()[0]:
+        list2.insert(END,row[0] + ' x ' + str(row[1]))
+
+    list2.insert(END,' ')     
+
+    for row2 in backend.show_basket()[1]:
+        list2.insert(END,row2)     
+
+def add_item_to_basket_command():
+    backend.add_one_to_basket(selected_tuple[0]) 
+    show_basket()
+
+def empty_basket_command():
+    list2.delete(0,END)
+    backend.empty_basket()                     
 
 window = Tk()
 window.wm_title("ECS Excercise")
@@ -120,10 +135,13 @@ b4.grid(row=6,column=3)
 b5=Button(window,text="Search Item",width=12,command=search_items_command)
 b5.grid(row=7,column=3)
 
-b6=Button(window,text="Add to Basket",width=12)
+b6=Button(window,text="Add to Basket",width=12, command=add_item_to_basket_command)
 b6.grid(row=9,column=1)
 
-b7=Button(window,text="Empty Basket",width=12)
+b7=Button(window,text="Empty Basket",width=12, command=empty_basket_command)
 b7.grid(row=10,column=1)
+
+#Show contents of basket
+show_basket() 
 
 window=mainloop()
